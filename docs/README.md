@@ -4,7 +4,7 @@
 
 Mcc Client
 
--  [Basic use](./basicUse.md)
+-  [Basic use](./basicUse.md) {@page ./basicUse.md}
 -  [Mcc connect config](./connectConfig.md)
 -  Limiting processor
 -  Blockchain essentials
