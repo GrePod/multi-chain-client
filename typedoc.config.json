@@ -9,7 +9,16 @@
          { "title": "Documentation Home", "source": "./docs/README.md" },
          { "title": "Basic Use", "source": "./docs/basicUse.md" },
          { "title": "Connected config", "source": "./docs/connectConfig.md" },
-         { "title": "For developers", "source": "./docs/forDeveloment.md" }
+         { "title": "For developers", "source": "./docs/forDeveloment.md" },
+         {
+            "title": "Transaction Objects",
+            "source": "./docs/transactionObjects.md",
+            "children": [
+               { "title": "Algo Transaction", "source": "AlgoTransaction.md" },
+               { "title": "UTXO BTC clone Transaction", "source": "BtcLtcDogeTransaction.md" },
+               { "title": "XRP Transaction", "source": "XrpTransaction.md" }
+            ]
+         }
       ]
    }
 }

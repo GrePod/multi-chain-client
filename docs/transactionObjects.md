@@ -298,10 +298,10 @@ mcc : /
 
 Refer to the following docs for each individual implementation:
 
--  [BtcTransaction](./BtcLtcDogeTransaction.md)
--  [LtcTransaction](./BtcLtcDogeTransaction.md)
--  [DogeTransaction](./BtcLtcDogeTransaction.md)
--  [XrpTransaction](./XrpTransaction.md)
--  [AlgoTransaction](./AlgoTransaction.md)
+-  [BtcTransaction](./transactionObjects/BtcLtcDogeTransaction.md)
+-  [LtcTransaction](./transactionObjects/BtcLtcDogeTransaction.md)
+-  [DogeTransaction](./transactionObjects/BtcLtcDogeTransaction.md)
+-  [XrpTransaction](./transactionObjects/XrpTransaction.md)
+-  [AlgoTransaction](./transactionObjects/AlgoTransaction.md)
 
-[Back to home](../README.md)
+[Back to home](README.md)
