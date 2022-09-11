@@ -2,7 +2,7 @@
    "excludeExternals": true,
    "entryPoints": ["./src"],
    "categorizeByGroup": true,
-   "categoryOrder": ["Algo","*"],
+   "categoryOrder": ["Mcc general","Algo","Btc UTXO","Ripple","Utils","*"],
    "out": "genDocs",
    "pluginPages": {
       "output": "",

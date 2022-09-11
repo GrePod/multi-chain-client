@@ -3,6 +3,9 @@ import { RateLimitOptions } from "../types";
 import { optional } from "../utils/typeReflection";
 import { IIGetBlockRes, IIGetTransactionRes, MccLoggingOptions } from "./genericMccTypes";
 
+/**
+ * @category Ripple
+ */
 export class XrpMccCreate {
    url: string = "";
    @optional() username?: string = "";
@@ -12,14 +15,30 @@ export class XrpMccCreate {
    @optional() loggingOptions? = new MccLoggingOptions();
 }
 
+/**
+ * @category Ripple
+ */
 export interface XrpCreateAddressData {}
 
+/**
+ * @category Ripple
+ */
 export interface IXrpGetTransactionRes extends IIGetTransactionRes, TxResponse {}
 
+/**
+ * @category Ripple
+ */
 export interface IXrpGetFullTransactionRes extends IXrpGetTransactionRes {}
+
+/**
+ * @category Ripple
+ */
 export interface IXrpGetBlockRes extends LedgerResponse, IIGetBlockRes {}
 
 // TODO modify to lite version of get block
+/**
+ * @category Ripple
+ */
 export interface IXrpGetBlockHeaderRes extends LedgerResponse, IIGetBlockRes {}
 
 ////
@@ -28,6 +47,9 @@ export interface IXrpGetBlockHeaderRes extends LedgerResponse, IIGetBlockRes {}
 
 // Flags
 // maybe one day https://github.com/ripple/rippled/issues/2457
+/**
+ * @category Ripple
+ */
 export type AccountRootFlags =
    | "lsfDefaultRipple"
    | "lsfDepositAuth"
@@ -39,6 +61,9 @@ export type AccountRootFlags =
    | "lsfRequireAuth"
    | "lsfRequireDestTag";
 
+/**
+ * @category Ripple
+ */
 export const FlagToHex = {
    lsfDepositAuth: 0x01000000,
    lsfDefaultRipple: 0x00800000,
@@ -51,6 +76,9 @@ export const FlagToHex = {
    lsfPasswordSpent: 0x00010000,
 };
 
+/**
+ * @category Ripple
+ */
 export const allHexFlags = [
    FlagToHex.lsfDepositAuth,
    FlagToHex.lsfDefaultRipple,
@@ -63,6 +91,9 @@ export const allHexFlags = [
    FlagToHex.lsfPasswordSpent,
 ];
 
+/**
+ * @category Ripple
+ */
 export const HexToFlag = {
    0x01000000: "lsfDepositAuth",
    0x00800000: "lsfDefaultRipple",
@@ -75,6 +106,9 @@ export const HexToFlag = {
    0x00010000: "lsfPasswordSpent",
 };
 
+/**
+ * @category Ripple
+ */
 export const PosToFlag = {
    24: "lsfDepositAuth",
    23: "lsfDefaultRipple",
@@ -87,6 +121,9 @@ export const PosToFlag = {
    16: "lsfPasswordSpent",
 };
 
+/**
+ * @category Ripple
+ */
 export const SpecialAddressesReverse = {
    rrrrrrrrrrrrrrrrrrrrrhoLvTp: "ACCOUNT_ZERO",
    rrrrrrrrrrrrrrrrrrrrBZbvji: "ACCOUNT_ONE",
@@ -95,6 +132,9 @@ export const SpecialAddressesReverse = {
    rrrrrrrrrrrrrrrrrrrn5RM1rHd: "NaN_ADDRESS",
 };
 
+/**
+ * @category Ripple
+ */
 export const SpecialAddresses = {
    ACCOUNT_ZERO: "rrrrrrrrrrrrrrrrrrrrrhoLvTp",
    ACCOUNT_ONE: "rrrrrrrrrrrrrrrrrrrrBZbvji",
@@ -107,7 +147,13 @@ export const SpecialAddresses = {
 // INTERNAL USE
 ////
 
-//// Params data for methods (internal use)
+/**
+ * Params data for methods (internal use)
+ * @category Ripple
+ */
 export type IAccountInfoRequest = Omit<AccountInfoRequest, "command">;
 
+/**
+ * @category Ripple
+ */
 export type IAccountTxRequest = Omit<AccountTxRequest, "command">;

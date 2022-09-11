@@ -3,10 +3,16 @@ import { LiteBlock } from "../base-objects/blocks/LiteBlock";
 import { INodeStatus } from "../base-objects/StatusBase";
 import { ITransaction } from "../base-objects/TransactionBase";
 
+/**
+ * @category Mcc general
+ */
 interface BaseRpcInterface {
    chainType: ChainType;
 }
 
+/**
+ * @category Mcc general
+ */
 export interface ReadRpcInterface extends BaseRpcInterface {
    // General methods
    getNodeStatus(): Promise<INodeStatus>;
@@ -30,6 +36,9 @@ export interface ReadRpcInterface extends BaseRpcInterface {
    // bottom block in connected node (0 if nodes dont support partial history)
 }
 
+/**
+ * @category Mcc general
+ */
 export interface WriteRpcInterface extends BaseRpcInterface {
    // Wallets
 
@@ -46,6 +55,9 @@ export interface WriteRpcInterface extends BaseRpcInterface {
    fundAddress(address: string, amount: number): any;
 }
 
+/**
+ * @category Mcc general
+ */
 export interface RPCInterface extends ReadRpcInterface, WriteRpcInterface {}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,14 +65,23 @@ export interface RPCInterface extends ReadRpcInterface, WriteRpcInterface {}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Parent Class objects that are extended on each unique underlying chain
 
+/**
+ * @category Mcc general
+ */
 export interface IIGetTransactionRes {}
 
+/**
+ * @category Mcc general
+ */
 export interface IIGetBlockRes {}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////// Flare attestation interfaces ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @category Mcc general
+ */
 export enum TransactionSuccessStatus {
    SUCCESS = 0,
    SENDER_FAILURE = 1, // if there is a failure and cannot be clearly attributed to the receiver, then it is SENDER_FAILURE
@@ -69,6 +90,7 @@ export enum TransactionSuccessStatus {
 
 /**
  * Object to use in get transaction additional parameters
+ * @category Mcc general
  */
 export interface getTransactionOptions {
    verbose?: boolean;
@@ -77,6 +99,9 @@ export interface getTransactionOptions {
    max_block?: number;
 }
 
+/**
+ * @category Mcc general
+ */
 export enum ChainType {
    invalid = -1,
    BTC = 0,
@@ -91,15 +116,27 @@ export enum ChainType {
 ////////////////////// Logging /////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Mode of debugging (default to off)
-// - off : no debugging
-// - production : light weight debugging that can be used on production
-// - develop : full debugging mode
+/**
+ * Mode of debugging (default to off)
+ * - off : no debugging
+ * - production : light weight debugging that can be used on production
+ * - develop : full debugging mode
+ * @category Mcc general
+ */
 export type LoggingModes = "off" | "production" | "develop";
 
+/**
+ * @category Mcc general
+ */
 export type IExceptionCallback = (error: any, message: string) => void;
+/**
+ * @category Mcc general
+ */
 export type ILoggingCallback = (message: string) => void;
 
+/**
+ * @category Mcc general
+ */
 export class MccLoggingOptions {
    mode?: LoggingModes;
    loggingCallback?: ILoggingCallback;
@@ -107,6 +144,9 @@ export class MccLoggingOptions {
    exceptionCallback?: IExceptionCallback;
 }
 
+/**
+ * @category Mcc general
+ */
 export class MccLoggingOptionsFull {
    mode!: LoggingModes;
    loggingCallback!: ILoggingCallback;
@@ -118,9 +158,15 @@ export class MccLoggingOptionsFull {
 ////////////////////// Lite blocks /////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @category Mcc general
+ */
 export interface IGetLiteBlockRes {
    hash: string;
    number: number;
 }
 
+/**
+ * @category Mcc general
+ */
 export interface IEmptyObject {}

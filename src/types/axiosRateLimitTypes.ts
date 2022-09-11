@@ -1,6 +1,9 @@
 import { AxiosInstance } from "axios";
 import { optional } from "../utils/typeReflection";
 
+/**
+ * @category Utils
+ */
 export interface RateLimitedAxiosInstance extends AxiosInstance {
    getMaxRPS(): number;
    setMaxRPS(rps: number): void;
@@ -13,6 +16,9 @@ export interface RateLimitedAxiosInstance extends AxiosInstance {
    // shift():any
 }
 
+/**
+ * @category Utils
+ */
 export class RateLimitOptions {
    @optional() maxRequests?: number = 1;
    @optional() perMilliseconds?: number = 1;

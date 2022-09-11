@@ -2,6 +2,9 @@ import { RateLimitOptions } from "../types";
 import { optional } from "../utils/typeReflection";
 import { IIGetBlockRes, IIGetTransactionRes, MccLoggingOptions, RPCInterface } from "./genericMccTypes";
 
+/**
+ * @category Btc UTXO
+ */
 export class UtxoMccCreate {
    url: string = "";
    username: string = "";
@@ -12,17 +15,26 @@ export class UtxoMccCreate {
 }
 
 // Creating transactions
+/**
+ * @category Btc UTXO
+ */
 export interface IIUtxoVin {
    txid: string;
    vout: number;
    sequence?: number;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IIUtxoVout {
    address: string;
    amount: number;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoScriptPubKey {
    asm: string;
    hex: string;
@@ -32,27 +44,42 @@ export interface IUtxoScriptPubKey {
    address?: string;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface UtxoVout {
    value: number;
    n: number;
    scriptPubKey: IUtxoScriptPubKey;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoScriptSig {
    asm: string;
    hex: string;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoWalletRes {
    name: string;
    warning: string;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface getAddressByLabelResponse {
    address: string;
    purpose: string; // TODO make this a choice:  "receive" |
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoTransactionListRes {
    txid: string;
    vout: number;
@@ -67,6 +94,9 @@ export interface IUtxoTransactionListRes {
    safe: boolean;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoGetBlockHeaderRes {
    hash: string;
    confirmations: number;
@@ -84,6 +114,9 @@ export interface IUtxoGetBlockHeaderRes {
    nextblockhash: string;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoGetBlockRes extends IUtxoGetBlockHeaderRes, IIGetBlockRes {
    size: number;
    strippedsize: number;
@@ -94,6 +127,7 @@ export interface IUtxoGetBlockRes extends IUtxoGetBlockHeaderRes, IIGetBlockRes 
 
 /**
  * Vin interface from transaction details requests
+ * @category Btc UTXO
  */
 export interface IUtxoVinTransaction {
    coinbase?: string;
@@ -104,16 +138,25 @@ export interface IUtxoVinTransaction {
    txinwitness?: string[];
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoCoinbase {
    coinbase?: string;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoVoutTransaction {
    value: number;
    n: number;
    scriptPubKey: IUtxoScriptPubKey;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoInBlockTransaction extends IIGetTransactionRes {
    txid: string;
    hash: string;
@@ -127,6 +170,9 @@ export interface IUtxoInBlockTransaction extends IIGetTransactionRes {
    hex: string;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoGetTransactionRes extends IIGetTransactionRes {
    txid: string;
    hash: string;
@@ -144,13 +190,22 @@ export interface IUtxoGetTransactionRes extends IIGetTransactionRes {
    blocktime: number;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoGetAlternativeBlocksOptions {
    height_gte?: number; // We only want tips / blocks that happened after specified height
    all_blocks?: boolean; // If we want to get all
 }
 
+/**
+ * @category Btc UTXO
+ */
 export type IUtxoGetAlternativeBlocksRes = IUtxoChainTip[];
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoChainTip {
    height: number; // height of the chain tip
    hash: string; // block hash of the tip
@@ -171,17 +226,26 @@ export interface IUtxoChainTip {
 //    vinouts: (IUtxoVoutTransaction | IUtxoCoinbase)[];
 // }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoVinVoutsMapper {
    index: number;
    vinvout: IUtxoVoutTransaction | undefined;
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoTransactionAdditionalData {
    vinouts?: (IUtxoVinVoutsMapper | undefined)[];
 }
 
 // Status methods
 
+/**
+ * @category Btc UTXO
+ */
 export interface INetworks {
    name: string; // network (ipv4, ipv6 or onion)
    limited: boolean; // is the network limited using -onlynet?
@@ -190,11 +254,18 @@ export interface INetworks {
    proxy_randomize_credentials: boolean; // Whether randomized credentials are used
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface ILocalAddresses {
    address: string; // network address
    port: number; // network port
    score: number; // relative score
 }
+
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoGetNetworkInfoRes {
    version: number; // the server version
    subversion: string; // the server subversion string
@@ -214,6 +285,9 @@ export interface IUtxoGetNetworkInfoRes {
    warnings: string;
 }
 
+/**
+ * @category Btc UTXO
+ */
 interface IUtxoStatisticsBip9 {
    // numeric statistics about BIP9 signalling for a softfork (only for started status)
    period: number; // the length in blocks of the BIP9 signalling period
@@ -223,6 +297,9 @@ interface IUtxoStatisticsBip9 {
    possible: boolean; // returns false if there are not enough blocks left in this period to pass activation threshold
 }
 
+/**
+ * @category Btc UTXO
+ */
 interface IUtxoBip9 {
    // status of bip9 softforks (only for bip9 type)
    status: string; // one of defined, started, locked_in, active, failed
@@ -233,6 +310,9 @@ interface IUtxoBip9 {
    statistics: IUtxoStatisticsBip9;
 }
 
+/**
+ * @category Btc UTXO
+ */
 interface IUtxoSoftFork {
    // name of the softfork
    type: string; // one of buried, bip9
@@ -241,6 +321,9 @@ interface IUtxoSoftFork {
    active: boolean; // true if the rules are enforced for the mempool and the next block
 }
 
+/**
+ * @category Btc UTXO
+ */
 export interface IUtxoGetBlockchainInfoRes {
    chain: "main" | "test" | "regtest"; // current network name (main, test, regtest)
    blocks: number; // the height of the most-work fully-validated chain. The genesis block has height 0
@@ -264,6 +347,7 @@ export type IUtxoNodeStatus = IUtxoGetBlockchainInfoRes & IUtxoGetNetworkInfoRes
 
 /**
  * Mcc extended BTC based UTXO transactions
+ * @category Btc UTXO
  */
 export type UtxoTransactionTypeOptions = "coinbase" | "payment" | "partial_payment" | "full_payment";
 // Transaction types and their description
@@ -276,6 +360,9 @@ export type UtxoTransactionTypeOptions = "coinbase" | "payment" | "partial_payme
 ////////////////////// MCC RPC implementation interfaces ///////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @category Btc UTXO
+ */
 export interface UtxoRpcInterface extends RPCInterface {
    getBlockHeader(blockHash: string): any;
 
