@@ -1,19 +1,12 @@
 import BN from "bn.js";
 import { isValidBytes32Hex, IUtxoGetTransactionRes, MccError, prefix0x, toBN, toHex, unPrefix0x, ZERO_BYTES_32 } from "../..";
 import { MccClient, MccUtxoClient, TransactionSuccessStatus } from "../../types";
-import { IUtxoTransactionAdditionalData, IUtxoVinTransaction, IUtxoVinVoutsMapper, IUtxoVoutTransaction } from "../../types/utxoTypes";
+import { IUtxoTransactionAdditionalData, IUtxoVinTransaction, IUtxoVinVoutsMapper, IUtxoVoutTransaction, UtxoTransactionTypeOptions } from "../../types/utxoTypes";
 import { BTC_MDU } from "../../utils/constants";
 import { WordToOpcode } from "../../utils/utxoUtils";
 import { AddressAmount, PaymentSummary, TransactionBase } from "../TransactionBase";
 import { Managed } from "../../utils/managed";
 import { mccError, mccErrorCode } from "../../utils/errors";
-
-export type UtxoTransactionTypeOptions = "coinbase" | "payment" | "partial_payment" | "full_payment";
-// Transaction types and their description
-// - coinbase        : transaction that mints new coins
-// - payment         : what you get from node
-// - partial_payment : transaction with some vout of vins added to additional data
-// - full_payment    : transaction with vouts for all vins added to additional data
 
 @Managed()
 export class UtxoTransaction extends TransactionBase<IUtxoGetTransactionRes, IUtxoTransactionAdditionalData> {

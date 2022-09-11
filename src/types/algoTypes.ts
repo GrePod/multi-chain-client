@@ -71,13 +71,13 @@ export interface IAlgoBlockData {
    upgradeVote: any;
 }
 
-interface IAlgoCertProp {
+export interface IAlgoCertProp {
    dig: Buffer;
    encdig: Buffer;
    oprop: Buffer;
 }
 
-interface IAlgoIndexerCertProp {
+export interface IAlgoIndexerCertProp {
    dig: string;
    encdig: string;
    oprop: string;

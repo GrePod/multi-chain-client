@@ -1,0 +1,15 @@
+{
+   "excludeExternals": true,
+   "entryPoints": ["./src"],
+   "categorizeByGroup": true,
+   "categoryOrder": ["*"],
+   "out": "genDocs",
+   "pluginPages": {
+      "pages": [
+         { "title": "Documentation Home", "source": "./docs/README.md" },
+         { "title": "Basic Use", "source": "./docs/basicUse.md" },
+         { "title": "Connected config", "source": "./docs/connectConfig.md" },
+         { "title": "For developers", "source": "./docs/forDeveloment.md" }
+      ]
+   }
+}

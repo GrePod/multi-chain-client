@@ -23,3 +23,6 @@ coverage/
 ### Updatres folder for docs
 # updates/*
 personal/
+
+## Documentation
+genDocs

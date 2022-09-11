@@ -61,6 +61,7 @@ export abstract class BlockBase<B> {
 }
 
 export { AlgoBlock } from "./blocks/AlgoBlock";
+export { AlgoIndexerBlock } from "./blocks/AlgoIndexerBlock";
 export { BtcBlock } from "./blocks/BtcBlock";
 export { DogeBlock } from "./blocks/DogeBlock";
 export { LtcBlock } from "./blocks/LtcBlock";

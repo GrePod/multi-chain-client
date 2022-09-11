@@ -182,7 +182,7 @@ export interface IUtxoTransactionAdditionalData {
 
 // Status methods
 
-interface INetworks {
+export interface INetworks {
    name: string; // network (ipv4, ipv6 or onion)
    limited: boolean; // is the network limited using -onlynet?
    reachable: boolean; // is the network reachable?
@@ -190,7 +190,7 @@ interface INetworks {
    proxy_randomize_credentials: boolean; // Whether randomized credentials are used
 }
 
-interface ILocalAddresses {
+export interface ILocalAddresses {
    address: string; // network address
    port: number; // network port
    score: number; // relative score
@@ -261,6 +261,16 @@ export interface IUtxoGetBlockchainInfoRes {
 }
 
 export type IUtxoNodeStatus = IUtxoGetBlockchainInfoRes & IUtxoGetNetworkInfoRes;
+
+/**
+ * Mcc extended BTC based UTXO transactions
+ */
+export type UtxoTransactionTypeOptions = "coinbase" | "payment" | "partial_payment" | "full_payment";
+// Transaction types and their description
+// - coinbase        : transaction that mints new coins
+// - payment         : what you get from node
+// - partial_payment : transaction with some vout of vins added to additional data
+// - full_payment    : transaction with vouts for all vins added to additional data
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////// MCC RPC implementation interfaces ///////////////////////////////////////////////////////////////
