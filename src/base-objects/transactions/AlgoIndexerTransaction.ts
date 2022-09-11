@@ -10,21 +10,26 @@ const web3 = require("web3");
 
 @Managed()
 export class AlgoIndexerTransaction extends TransactionBase<IAlgoGetTransactionRes, any> {
-   public makeFull(client: MccClient): Promise<void> {
-      throw new Error("Method not implemented.");
+   public async makeFull(client: MccClient): Promise<void> {
+      return;
    }
+
    public get assetSourceAddresses(): (string | undefined)[] {
       throw new Error("Method not implemented.");
    }
+
    public get assetReceivingAddresses(): (string | undefined)[] {
       throw new Error("Method not implemented.");
    }
+
    public get assetSpentAmounts(): AddressAmount[] {
       throw new Error("Method not implemented.");
    }
+
    public get assetReceivedAmounts(): AddressAmount[] {
       throw new Error("Method not implemented.");
    }
+   
    public get txid(): string {
       return this.hash;
    }
@@ -41,7 +46,7 @@ export class AlgoIndexerTransaction extends TransactionBase<IAlgoGetTransactionR
    }
 
    public get reference(): string[] {
-      if(this.data.transaction.note) {
+      if (this.data.transaction.note) {
          return [base64ToHex(this.data.transaction.note)];
       }
       return [];

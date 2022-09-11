@@ -12,4 +12,4 @@ The most basic part of any blockchain network are its blocks, even if the detail
 | `stdTransactionIds: string[]` | Array of 32 bytes, hex without 0x prefix encoded transaction hashes.       |
 | `transactionCount: number`    | Number of transactions in the block.                                       |
 
-[Back to home](../README.md)
+[Back to home](README.md)

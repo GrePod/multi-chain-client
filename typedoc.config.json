@@ -2,9 +2,10 @@
    "excludeExternals": true,
    "entryPoints": ["./src"],
    "categorizeByGroup": true,
-   "categoryOrder": ["*"],
+   "categoryOrder": ["Algo","*"],
    "out": "genDocs",
    "pluginPages": {
+      "output": "",
       "pages": [
          { "title": "Documentation Home", "source": "./docs/README.md" },
          { "title": "Basic Use", "source": "./docs/basicUse.md" },
@@ -17,6 +18,35 @@
                { "title": "Algo Transaction", "source": "AlgoTransaction.md" },
                { "title": "UTXO BTC clone Transaction", "source": "BtcLtcDogeTransaction.md" },
                { "title": "XRP Transaction", "source": "XrpTransaction.md" }
+            ]
+         },
+         {
+            "title": "Block Objects",
+            "source": "./docs/blockObjects.md",
+            "children": [
+               { "title": "Algo Block", "source": "AlgoBlock.md" },
+               { "title": "UTXO BTC clone Block", "source": "BtcLtcDogeBlock.md" },
+               { "title": "XRP Block", "source": "XrpBlock.md" }
+            ]
+         },
+         {
+            "title": "Block Objects",
+            "source": "./docs/mccClient.md",
+            "children": [
+               { "title": "Algo Client", "source": "AlgoClient.md" },
+               { "title": "UTXO BTC clone Client", "source": "BtcLtcDogeClient.md" },
+               { "title": "XRP Client", "source": "XrpClient.md" }
+            ]
+         },
+         {
+            "title": "Block Objects",
+            "childrenDir": "./docs/definitions",
+            "children": [
+               { "title": "Account based vs UTXO based chains", "source": "account-based-vs-utxo-chains.md" },
+               { "title": "Native payment definition", "source": "native-payment.md" },
+               { "title": "Payment reference (FLARE/SGB)", "source": "payment-reference.md" },
+               { "title": "Sources", "source": "sources.md" },
+               { "title": "Transaction status", "source": "transaction-status.md" }
             ]
          }
       ]

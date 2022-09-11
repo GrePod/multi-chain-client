@@ -6,6 +6,10 @@ import { RateLimitOptions } from "../types";
 import { optional } from "../utils/typeReflection";
 import { IIGetBlockRes, IIGetTransactionRes, MccLoggingOptions } from "./genericMccTypes";
 
+/**
+ * Mcc create for creating Algo client
+ * @category Algo
+ */
 export class AlgoMccCreate {
    algod = new AlgoNodeApp();
    @optional() indexer? = new AlgoNodeApp();
@@ -14,11 +18,18 @@ export class AlgoMccCreate {
    @optional() loggingOptions? = new MccLoggingOptions();
 }
 
+/**
+ * Mcc create helper class
+ * @category Algo
+ */
 export class AlgoNodeApp {
    url: string = "";
    token: string = "";
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoStatusRes {
    catchpoint?: string;
    catchpointAcquiredBlocks?: number;
@@ -37,6 +48,9 @@ export interface IAlgoStatusRes {
    timeSinceLastRound: number;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoBlockHeaderData {
    earn: number;
    fees: string;
@@ -55,7 +69,10 @@ export interface IAlgoBlockHeaderData {
    txns: any[]; // improve
 }
 
-// indexer block
+/**
+ * Indexer block
+ * @category Algo
+ */
 export interface IAlgoBlockData {
    genesisHash: string;
    genesisId: string;
@@ -71,18 +88,27 @@ export interface IAlgoBlockData {
    upgradeVote: any;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoCertProp {
    dig: Buffer;
    encdig: Buffer;
    oprop: Buffer;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoIndexerCertProp {
    dig: string;
    encdig: string;
    oprop: string;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoCert {
    prop: IAlgoCertProp;
    rnd: number;
@@ -90,6 +116,9 @@ export interface IAlgoCert {
    vote: any[];
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoIndexerCert {
    prop: IAlgoIndexerCertProp;
    rnd: number;
@@ -97,21 +126,33 @@ export interface IAlgoIndexerCert {
    vote: any[];
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoGetBlockRes extends IAlgoBlockData, IIGetBlockRes {
    cert: IAlgoCert;
    type: "IAlgoGetBlockRes";
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoGetIndexerBlockRes extends IAlgoBlockData, IIGetBlockRes {
    cert: IAlgoIndexerCert;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoGetBlockHeaderRes {
    type: "IAlgoGetBlockHeaderRes";
    block: IAlgoBlockHeaderData;
    cert: IAlgoCert;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoBlockMsgPackBlock {
    earn: number;
    fees: Buffer;
@@ -130,13 +171,22 @@ export interface IAlgoBlockMsgPackBlock {
    txns: any[]; // Array of transaction objects
 }
 
-type IALgoBlock = BlockHeader
+/**
+ * @category Algo
+ */
+type IALgoBlock = BlockHeader;
 
+/**
+ * @category Algo
+ */
 export interface IAlgoBlockMsgPack {
    block: IAlgoBlockMsgPackBlock;
    cert: IAlgoCert;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoBlockAdditionalData {
    transactionsObjects: AlgoTransaction[];
 }
@@ -145,6 +195,9 @@ export interface IAlgoSignature {
    sig: string;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoPaymentTransaction {
    amount: number;
    closeAmount?: number;
@@ -154,6 +207,7 @@ export interface IAlgoPaymentTransaction {
 
 /**
  * Docs from : https://developer.algorand.org/docs/rest-apis/indexer/#transaction
+ * @category Algo
  */
 export interface IAlgoTransaction {
    applicationTransaction?: any;
@@ -196,6 +250,9 @@ export interface IAlgoTransaction {
    // * [appl] application-transaction
 }
 
+/**
+ * @category Algo
+ */
 interface IALgoApar {
    an: string;
    au: string;
@@ -229,16 +286,22 @@ interface IALgoApar {
 //    xaid?: number; // in axfer
 // }
 
+/**
+ * @category Algo
+ */
 export type IAlgoTransactionMsgPack = EncodedTransaction & {
    txid: string; // Base32 txid as string (calculated in block processing)
    timestamp: number; // unix timestamp from block (transactions get timestamp from block they are in)
-   hgi: boolean; // 
+   hgi: boolean; //
    sig?: Buffer; // signature
    lsig?: Buffer; // l signature
    msig?: Buffer; // multi signature
    sgnr?: Buffer; // s signature
 };
 
+/**
+ * @category Algo
+ */
 export type AlgoTransactionTypeOptions = "pay" | "keyreg" | "acfg" | "axfer" | "afrz" | "appl" | "pay_close" | "axfer_close";
 // * pay         - payment-transaction
 // * keyreg      - keyreg-transaction
@@ -247,7 +310,11 @@ export type AlgoTransactionTypeOptions = "pay" | "keyreg" | "acfg" | "axfer" | "
 // * afrz        - asset-freeze-transaction
 // * appl        - application-transaction
 // * pay_close   - custom made type for transactions that close accounts
-// * axfer_close - custom type of asset transfer transaction that closes asset account 
+// * axfer_close - custom type of asset transfer transaction that closes asset account
+
+/**
+ * @category Algo
+ */
 export interface IAlgoLitsTransaction {
    address?: string; // Only include transactions with this address in one of the transaction fields.
    addressRole?: "sender" | "receiver" | "freeze-target"; // Combine with the address parameter to define what type of address to search for.
@@ -291,23 +358,34 @@ export interface IAlgoLitsTransaction {
    txid?: string; // Lookup specific transaction
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoGetTransactionRes extends IIGetTransactionRes {
    currentRound: number;
    transaction: IAlgoTransaction;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoGetFullTransactionRes extends IAlgoTransaction, IIGetTransactionRes {
    currentRound: number;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoListTransactionRes {
    currentRound: number;
    nextToken?: string;
    transactions: IAlgoTransaction[];
 }
 
-// Algo status types
-
+/**
+ * Algo status types
+ * @category Algo
+ */
 export interface IAlgoGetStatus {
    catchpoint?: string;
    catchpointAcquiredBlocks?: number;
@@ -326,6 +404,9 @@ export interface IAlgoGetStatus {
    timeSinceLastRound: number;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoBuildVersion {
    branch: string;
    buildNumber: number;
@@ -335,6 +416,9 @@ export interface IAlgoBuildVersion {
    minor: number;
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoVersion {
    build: IAlgoBuildVersion;
    genesisHashB64: string;
@@ -342,6 +426,9 @@ export interface IAlgoVersion {
    versions: string[];
 }
 
+/**
+ * @category Algo
+ */
 export interface IAlgoStatusObject {
    health: number;
    status: IAlgoGetStatus;
@@ -352,6 +439,9 @@ export interface IAlgoStatusObject {
 ////////////////////// Algo utils types ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @category Algo
+ */
 export interface IAlgoHexAddress {
    publicKey: string; // should be of length 64
    checksum: string; // should be of length 8
@@ -361,12 +451,18 @@ export interface IAlgoHexAddress {
 ////////////////////// Algo build-in assets ASA's //////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export type IAlgoAssets = Asset
+/**
+ * @category Algo
+ */
+export type IAlgoAssets = Asset;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////// Algo transaction additional data ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/**
+ * @category Algo
+ */
 export interface IAlgoAdditionalData {
-   assetInfo?: IAlgoAssets
+   assetInfo?: IAlgoAssets;
 }

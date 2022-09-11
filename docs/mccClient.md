@@ -2,11 +2,11 @@
 
 Currently, the MCC library supports querying from 5 different blockchains:
 
--  [Bitcoin (BTC)](./BtcLtcDogeClient.md)
--  [Litecoin (LTC)](./BtcLtcDogeClient.md)
--  [Dogecoin (DOGE)](./BtcLtcDogeClient.md)
--  [Ripple (XRP)](./XrpClient.md)
--  [Algorand (ALGO)](./AlgoClient.md)
+-  [Bitcoin (BTC)](./mccClient/BtcLtcDogeClient.md)
+-  [Litecoin (LTC)](./mccClient/BtcLtcDogeClient.md)
+-  [Dogecoin (DOGE)](./mccClient/BtcLtcDogeClient.md)
+-  [Ripple (XRP)](./mccClient/XrpClient.md)
+-  [Algorand (ALGO)](./mccClient/AlgoClient.md)
 
 Each client implements the following methods:
 
@@ -22,4 +22,4 @@ Some clients also implement other methods such as (for more detail refer to thei
 -  `listTransactions?(options?: any): any`
 -  `getBlockTips?(height_gte: number): Promise<LiteBlock[]>`
 
-[Back to home](../README.md)
+[Back to home](README.md)
